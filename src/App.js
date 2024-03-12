@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import About from './components/About';
+// import About from './components/About';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
 
@@ -46,7 +46,7 @@ function App() {
           <Alert alert={alert}/>
           <div className="container my-3">
             <Routes> {/* Updated from Switch to Routes */}
-                <Route exact path="/about" element={<About />} /> {/* Updated syntax for v6 */}
+                {/*<Route exact path="/about" element={<About />} */}  {/* Updated syntax for v6 */}
                 <Route exact path="/" element={<TextForm showAlert={showAlert} mode={mode} heading="Enter the text to analyze below" />} /> {/* Updated syntax for v6 */}
             </Routes>
           </div>
