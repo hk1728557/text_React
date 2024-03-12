@@ -1,18 +1,30 @@
+// import './App.css';
+// import Navbar from './components/Navbar';
+// import TextForm from './components/TextForm';
+// // import About from './components/About';
+// import React, { useState } from 'react';
+// import Alert from './components/Alert';
+
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+// } from "react-router-dom";
+
+
+// function App() {
+//   const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
+//   const [alert, setAlert] = useState(null);
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 // import About from './components/About';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
-
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [mode, setMode] = useState('light'); // Whether dark mode is enabled or not
+  const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
@@ -39,17 +51,33 @@ function App() {
     }
   }
 
+  // return (
+  //   <>
+  //     <Router>
+  //         <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} aboutUs="About Us" />
+  //         <Alert alert={alert}/>
+  //         <div className="container my-3">
+  //           <Routes> {/* Updated from Switch to Routes */}
+  //           {/* Updated syntax for v6 */}
+  //               {/* <Route exact path="/about" element={<About />} />  */}
+  //               {/* Updated syntax for v6 */}
+  //               <Route path="/" element={<TextForm showAlert={showAlert} mode={mode} heading="Enter the text to analyze below" />} />
+
+  //           </Routes>
+  //         </div>
+  //     </Router>
+  //   </>
+  // );
   return (
     <>
       <Router>
-          <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} aboutUs="About Us" />
-          <Alert alert={alert}/>
-          <div className="container my-3">
-            <Routes> {/* Updated from Switch to Routes */}
-                {/*<Route exact path="/about" element={<About />} */}  {/* Updated syntax for v6 */}
-                <Route exact path="/" element={<TextForm showAlert={showAlert} mode={mode} heading="Enter the text to analyze below" />} /> {/* Updated syntax for v6 */}
-            </Routes>
-          </div>
+        <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} aboutUs="About Us" />
+        <Alert alert={alert}/>
+        <div className="container my-3">
+          <Routes>
+            <Route path="/" element={<TextForm showAlert={showAlert} mode={mode} heading="Enter the text to analyze below" />} />
+          </Routes>
+        </div>
       </Router>
     </>
   );
