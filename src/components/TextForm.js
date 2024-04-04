@@ -47,36 +47,42 @@ export default function TextForm(props){
             <input type="email" className="form-control" id="searchField" placeholder="name@example.com"/>
             </div> */}
 
-            <h2>{props.heading}</h2>
+            <h2 className='mb-4'>{props.heading}</h2>
             
             {/* Add a form field */}
             <div className="mb-3">
 
             {/* <label htmlFor="textBox" className="form-label">Example Textarea</label> */}
-            <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'grey':'white',color: props.mode==='dark'?'white':'#042743'}} id="myBox" rows="8"></textarea>
+            <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: 
+                props.mode==='dark'?'#13466e':'white',color: props.mode==='dark'?'white':'#042743'}} id="myBox" rows="8"> 
+                </textarea>
             </div>
   
            {/* Add a button */}
             <div>
-                <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
+                <button disabled ={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Convert 
+                 to Uppercase</button>
                 {/* mx and span using for space */}
                 {/* <span style={{ margin: '0 10px' }}></span>*/}
                  {/* This creates space between the buttons  */}
-                <button className="btn btn-primary mx-2" onClick={handleLowerClick}>Convert to Lowercase</button>
+                <button disabled ={text.length===0} className="btn btn-primary mx-2 my-2" onClick= 
+                 {handleLowerClick}>Convert to Lowercase</button>
                 {/* clear Text button */}
-                <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear-Text</button>
+                <button disabled ={text.length===0} className="btn btn-primary mx-2 my-2" onClick= 
+                 {handleClearClick}>Clear-Text</button>
 
-                <button className="btn btn-primary mx-2" onClick={handleResetClick}>Reset-Text</button>
+                <button disabled ={text.length===0} className="btn btn-primary mx-2 my-2" onClick= 
+                 {handleResetClick}>Reset-Text</button>
             </div>
 
             <div className="container my-3"> {/* my-3 is using for upper spacing */}
                 <h2> Your Text Summary</h2>
                 {/* check words and length in the text */}
-                <p><b>{text.split(" ").length} </b>words and <b>{text.length}</b> characters</p>
+                <p><b>{text.split(" ").filter((element)=>{return element.length!==0}).length} </b>words and <b>{text.length}</b> characters</p>
                 {/* tead time number of words */}
-                <p><b>{0.008*text.split(" ").length}</b> Minutes read in time</p>
+                <p><b>{0.008*text.split(" ").filter((element)=>{return element.length!==0}).length}</b> Minutes read in time</p>
                 <h3>Preview</h3>
-                <p>{text.length>0?text:"Enter something to preview it"}</p>
+                <p>{text.length>0?text:"Nothing to preview!"}</p>
                 <hr/><hr/>
             </div>
 
